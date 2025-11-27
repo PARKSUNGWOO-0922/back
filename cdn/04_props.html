@@ -1,33 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.28.4/babel.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="root"></div>
 
-    <script type="text/babel"> 
-    //props(프롭스):부모에서 자식으로 데이터를 전달할때 값을 받는 매개변수
-    //부모 컴포넌트
-       function App() {
-                return <Welcome name="React 개발자" age="25" />;
-           }
+    <script type="text/babel">
+      //props(프롭스):부모에서 자식으로 데이터를 전달할때 값을 받는 매개변수
+      //부모 컴포넌트
+      //<자식컴포넌트명 속성="값" 속성="값" />
+      function App() {
+        const handleClick = () => {
+          alert("버튼을 클릭하였습니다.");
+        };
+        return (
+          <div>
+            <Welcome name="React 개발자" age="25" />{" "}
+            <Profile name="홍길동" age={25} job="개발자" />
+            <Counter onClick={handleClick} />
+            <Wrapper> <p>이 내용은 children입니다.</p> </Wrapper>{ /* 종료태그 사용도가능 */}
+          </div>
+        );
+      }
 
-    //자식 컴포넌트
-       function Welcome(props) {
-                return <h1>안녕하세요,{props.age}살 {props.name}님!</h1>;
-        }
+      //자식 컴포넌트
+      //{props.속성명}
+      //function Welcome(props) {
+      function Welcome({ name, age }) {
+        //return <h1>안녕하세요,{props.age}살 {props.name}님!</h1>;
+        return (
+          <h1>
+            안녕하세요,{age}살 {name}님!
+          </h1>
+        );
+      }
+      //2.porps 구조분해할당
+      function Profile({ name, age, job }) {
+        return (
+          <div>
+            <p>이름: {name}</p>
+            <p>나이: {age}</p>
+            <p>직업: {job}</p>
+          </div>
+        );
+      }
 
-        const root = ReactDOM.createRoot(document.querySelector("#root"));
-         // root.render( <Welcome name="React 개발자" age="25" />);
-          root.render(<App />);
+      //  props에 함수 전달
+      function Counter({ onClick }) {
+        return <button onClick={onClick}>+1</button>;
+      }
 
+      // props.children (컴포넌트 사이에 넣는 내용)
+      //child 와  childern 비교확인~
+      function Wrapper({ children }) {
+        return <div>{children}</div>;
+      }
+
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      // root.render( <Welcome name="React 개발자" age="25" />);
+      root.render(<App />);
     </script>
-
-</body>
+  </body>
 </html>
