@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        function App5() {
+            let text = '';  // React의 useState 역할
+
+            const root = document.getElementById('app');
+
+            // DOM 요소 생성
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = text;
+
+            const p = document.createElement('p');
+            p.textContent = `You typed: ${text}`;
+
+            const button = document.createElement('button');
+            button.textContent = 'Delete';
+
+            // 상태 업데이트 함수 (setText 역할)
+            function setText(newValue) {
+                text = newValue;
+                input.value = text;
+                p.textContent = `You typed: ${text}`;
+            }
+
+            // 이벤트 핸들러
+            input.addEventListener('input', (e) => {
+                setText(e.target.value);
+            });
+
+            button.addEventListener('click', () => {
+                setText('지워짐!');
+            });
+
+            // 화면에 추가
+            root.appendChild(input);
+            root.appendChild(p);
+            root.appendChild(button);
+        }
+
+        App5();
+    </script>
+
+</body>
+
+</html>
