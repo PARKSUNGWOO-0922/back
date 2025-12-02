@@ -32,8 +32,8 @@
       ul {
         list-style: none;
       }
+      /* https://sitero.co.kr/fontsize :단위변환 사이트 */
       body {
-          /* https://sitero.co.kr/fontsize :단위변환 사이트 */
         font: 0.9375rem/1.6 "NanumBarunGothic", sans-serif;
         background: #111;
       }

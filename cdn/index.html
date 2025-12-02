@@ -7,143 +7,140 @@
   <style>
         @import url(css/reset.css);
 
-        #box_office_card {
+        .box_office {
+            display: flex;
+            gap: 40px;
+        }
+
+        .box_office_card {
+            position: relative;
             width: 245px;
         }
 
-        #box_office_card .rank {
+        /* 영화 순위 */
+        .rank {
             position: absolute;
             left: 10px;
             top: 10px;
+            color: #fff;
             font-size: 2rem;
             font-weight: 300;
             font-style: italic;
-            color: #fff;
             text-shadow: 2px 2px 2px #000;
         }
 
-        #box_office_card .poster {
-            height: 352px;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-
-        #box_office_card .screen_type {
+        /* 스크린 타입 */
+        .screen_type {
             position: absolute;
-            width: 60px;
             left: 10px;
             bottom: 10px;
+            width: 60px;
         }
 
-        #box_office_card .movie_grade {
+        /* 연령 제한 */
+        .grade {
             position: absolute;
+            
             width: 28px;
             right: 10px;
             bottom: 10px;
+            width: 28px;
         }
 
-        #box_office_card .btn {
+        /* 관람평 */
+        .score {
+            position: absolute;
+            width: calc(100% - 48px);
+            text-align: center;
+            bottom: 30px;
+            border-top: 1px solid rgba(255, 255, 255, .2);
+            padding-top: 8px;
+        }
+
+        /* 관람평 점수 */
+        .score span {
+            color: #59bec9;
+            font-size: 1.5rem;
+            margin-left: 16px;
+        }
+
+        /* 버튼 */
+        .btn {
             display: flex;
             gap: 8px;
+            margin-top: 8px;
         }
 
-        #box_office_card .like {
-            width: 100px;
-            height: 34px;
-            border: 1px solid #fff;
-            background: transparent;
+        /* 좋아요! 버튼 */
+        .like {
             color: #fff;
+            background: transparent;
+            border: 1px solid #fff;
             border-radius: 5px;
-            cursor: pointer;
+            width: 100px;
+            /* height: 34px; */
         }
 
-        #box_office_card .like i {
-            margin-right: 8px;
+        .like i {
+            margin-right: 4px;
         }
 
-        /* 하트 좋아요! 클릭시 색상 변경하기 */
-        #box_office_card .like.active i {
-            color: red;
-        }
-
-        #box_office_card .reservation_link {
-            background: #037b94;
+        /* 예매 버튼 */
+        .reservation_link {
             width: 100%;
-            height: 36px;
-            line-height: 36px;
+            background: #037b94;
             border-radius: 5px;
             text-align: center;
+            padding: 6px;
+            /* line-height: 34px; */
         }
 
         /* y축 회전 */
-        #box_office_card .poster_wrap {
+        .inner {
             position: relative;
             height: 352px;
-            /* 3D 효과 필수 */
+            /* 원근감 */
             perspective: 1000px;
-            margin-bottom: 8px;
         }
 
-        /* 앞면, 뒷면 공통 */
-        #box_office_card .poster_front,
-        #box_office_card .poster_back {
+        .inner:hover {
+            /* 마우스 손가락 모양 */
+            cursor: pointer;
+        }
+
+        .front,
+        .back {
+            position: absolute;
             width: 100%;
             height: 100%;
-            position: absolute;
             left: 0;
             top: 0;
+            transition: .5s;
             border-radius: 5px;
             overflow: hidden;
-            /* 뒷면 숨김 */
-            backface-visibility: hidden;
             transform-style: preserve-3d;
-            transition: transform .6s;
+           
         }
 
-        /* 앞면 */
-        #box_office_card .poster_front {
+        .front {
             transform: rotateY(0deg);
         }
 
-        /* 뒷면 */
-        #box_office_card .poster_back {
-            color: #fff;
+        .back {
+            transform: rotateY(180deg);
             padding: 24px;
+            color: #fff;
+            background: rgb(0, 0, 0, 0.8);
+            /* 뒷면 숨기기 */
+            backface-visibility: hidden;
+        }
+
+        /* 호버시 뒤집기 */
+        .inner:hover .front {
             transform: rotateY(180deg);
         }
 
-        #box_office_card .poster_back::before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: url(images/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg);
-            filter: brightness(30%);
-        }
-
-        #box_office_card .poster_back .score {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 30px;
-        }
-
-        #box_office_card .poster_back .score span {
-            margin-left: 16px;
-            font-size: 1.5rem;
-            color: #59bec9;
-        }
-
-        /* hover 시 뒤집기 */
-        #box_office_card .poster_wrap:hover .poster_front {
-            transform: rotateY(180deg);
-        }
-
-        #box_office_card .poster_wrap:hover .poster_back {
+        .inner:hover .back {
             transform: rotateY(360deg);
         }
   </style>
@@ -151,34 +148,30 @@
 <body>
 
 <div id="root"></div>
-
+<!-- Font Awesome CDN (하트 아이콘) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <!-- React CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.21.8/babel.min.js"></script>
+    <script src="js/data.js"></script>
 
 <script type="text/babel">
 
-function BoxOfficeCard() {
-  //const [liked, setLiked] = React.useState(false);
- // const [count, setCount] = React.useState(3600);
+        function App() {
+            return (
+                <div className="box_office">
+                    <BoxOfficeCard />
+                </div>
+            );
+        }
 
-  // k 단위 변환
-  //const formatCount = (num) => {
-  //  return num >= 1000 ? (num/1000).toFixed(1)+'k' : num;
-  //}
-
-//   const handleClick = () => {
-//     const newLiked = !liked;
-//     const newCount = newLiked ? count + 1 : count - 1;
-//     setLiked(newLiked);
-//     setCount(newCount);
-//   }
+        function BoxOfficeCard() {
 
   return (
-    <div id="box_office_card">
-      <div className="poster_wrap">
-        <div className="poster_front">
+                <div className="box_office_card">
+                    <div className="inner">
+                        <div className="front">
           <span className="rank">1</span>
           <div className="poster">
             <img src="images/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg" alt="쥬토피아" />
@@ -192,15 +185,14 @@ function BoxOfficeCard() {
             <img src="images/ALL_56x56.png" alt="Movie Grade All" />
           </div>
         </div>
-        <div className="poster_back">
+                        <div className="back">
           <p>더 화려해진 세계, 더 넓어진 주토피아!<br />디즈니의 가~~장 사랑스러운 콤비 '주디'와 '닉'이 돌아온다!<br /><br />미스터리한 뱀 '게리'가 나타난 순간.</p>
           <div className="score">관람평<span>9.3</span></div>
         </div>
       </div>
       <div className="btn">
-        <button type="button" className={`like ${liked ? 'active' : ''}`} onClick={handleClick}>
-          <i className={liked ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
-          {formatCount(count)}
+                        <button type="button" className="like">
+                            <i className="fa-regular fa-heart"></i>3.6k
         </button>
         <a href="https://www.megabox.co.kr/booking" className="reservation_link">예매</a>
       </div>
@@ -210,10 +202,9 @@ function BoxOfficeCard() {
 
 // 렌더링
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<BoxOfficeCard />);
+        root.render(<App />);
 
 </script>
-<!-- Font Awesome CDN (하트 아이콘) -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
