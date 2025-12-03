@@ -1,11 +1,9 @@
 import "./css/reset.css";
 import "./css/BoxOfficeCard.css";
-import poster from "/images/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg";
-// public 폴더에 이미지가 들어 있을때('/'로 시작)
+// public 폴더에 이미지가 들어 있을 때 ('/'로 시작)
+// import poster from "/images/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg";
+// src 폴더에 이미지가 들어 있을 때 ('./로 시작)
 // import mx4d from "./images/type_mega_mx4d.png";
-// import cinema from "./images/type_dolbycinema.png";
-// import atmos from "./images/type_dolbyatmos.png";
-// import ageAll from "./images/ALL_56x56.png";
 
         function BoxOfficeCard({data}) {
 
@@ -15,17 +13,17 @@ import poster from "/images/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg";
                         <div className="front">
                             <span className="rank">{data.rank}</span>
                             <div className="poster">
-                                <img src={poster} alt={data.title} />
+                                <img src={data.poster} alt={data.title} />
                             </div>
                             <div className="screen_type">
-                                {data.screenTypes.map((ele,idx)=><img src={data.screenTypes[idx]} alt="screentypes" />)}
-                                {data.screenTypes.map <img key={ele} alt="screentypes" />)}
-                                <img src={data.screenTypes[0]} alt="Mega MX4D" />
+                                {/* {data.screenTypes.map((ele, idx)=><img src={data.screenTypes[idx]} alt="screen types" />)} */}
+                                {data.screenTypes.map(ele=><img key={ele} src={ele} alt="screen types" />)}
+                                {/* <img src={data.screenTypes[0]} alt="Mega MX4D" />
                                 <img src={data.screenTypes[1]} alt="Dolby Cinema" />
-                                <img src={data.screenTypes[2]} alt="Dolby Atmos" />
+                                <img src={data.screenTypes[2]} alt="Dolby Atmos" /> */}
                             </div>
                             <div className="movie_grade">
-                                <img src={ageAll} alt={"Movie Grade" + data.age} />
+                                <img src={data.grade} alt={"Movie Grade" + data.age} />
                             </div>
                         </div>
                         <div className="back">
