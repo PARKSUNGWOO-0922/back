@@ -1,5 +1,6 @@
 // 카드 데이터 배열
 // datas 배열
+export const datas =
 const datas = [
     {
         rank: 1,

@@ -1,14 +1,15 @@
 import BoxOfficeCard from './BoxOfficeCard.jsx';
 import datas from './data.js';
+import {datas} from './data.js';
 
 
 function App() {
-    const datas.map(()=>{<BoxOfficeCard/>});
+    
     return (
         <div className="box_office">
-            <BoxOfficeCard />
+           {datas.map((ele)=>{return <BoxOfficeCard key={ele.rank} data={ele} />})}
         </div>
     );
 }
 
-export default App;
+export default App;``
