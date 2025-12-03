@@ -1,4 +1,10 @@
-import "./BoxOfficeCard.css";
+import "./css/reset.css";
+import "./css/BoxOfficeCard.css";
+import poster from "./images/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg";
+import mx4d from "./images/type_mega_mx4d.png";
+import cinema from "./images/type_dolbycinema.png";
+import atmos from "./images/type_dolbyatmos.png";
+import ageAll from "./images/ALL_56x56.png";
 
         function BoxOfficeCard() {
 
@@ -8,15 +14,15 @@ import "./BoxOfficeCard.css";
                         <div className="front">
                             <span className="rank">1</span>
                             <div className="poster">
-                                <img src="images/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg" alt="주토피아" />
+                                <img src={poster} alt="쥬토피아" />
                             </div>
                             <div className="screen_type">
-                                <img src="images/type_mega_mx4d.png" alt="Mega MX4D" />
-                                <img src="images/type_dolbycinema.png" alt="Dolby Cinema" />
-                                <img src="images/type_dolbyatmos.png" alt="Dolby Atmos" />
+                                <img src={mx4d} alt="Mega MX4D" />
+                                <img src={cinema} alt="Dolby Cinema" />
+                                <img src={atmos} alt="Dolby Atmos" />
                             </div>
                             <div className="movie_grade">
-                                <img src="images/ALL_56x56.png" alt="Movie Grade All" />
+                                <img src={ageAll} alt="Movie Grade All" />
                             </div>
                         </div>
                         <div className="back">
