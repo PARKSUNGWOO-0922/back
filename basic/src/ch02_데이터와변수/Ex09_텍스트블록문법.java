@@ -24,7 +24,18 @@ public class Ex09_텍스트블록문법 {
 	             """;
 		
 		System.out.println(str1);
+		System.out.println("-------------------------");	
 		System.out.println(str2);
+		System.out.println("-------------------------");
+
+		// 이어 작성하기 (\)
+		String str3 = """
+				나는 자바를 \
+				학습합니다.
+				나는 자바 고수가 될 것입니다.
+				""";
+		System.out.println(str3);
+
 
 		}
 		
