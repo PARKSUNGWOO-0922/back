@@ -8,6 +8,7 @@ public class Ex08_EnumMain {
 
 	public static void main(String[] args) {
 		//Week 열거 타입 변수 선언
+		// 참조타입 변수 = null;
 		Week today = null;
  
 		//Calendar 얻기
