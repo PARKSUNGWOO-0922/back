@@ -1,4 +1,4 @@
-package ch09_중첩.ex04_외부클래스멤버접근;
+package ch09_중첩선언과익명객체.ex04_외부클래스멤버접근;
 /**
  * 외부 클래스: class A
  * 내부 클래스: class B
