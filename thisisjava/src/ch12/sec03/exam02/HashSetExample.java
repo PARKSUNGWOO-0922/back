@@ -1,7 +1,12 @@
 package ch12.sec03.exam02;
 
 import java.util.HashSet;
-	
+/**
+ * Set은 동등 객체를 중복 저장하지 않는다.
+ * 예)Hashset
+ * hashcode()와 equals() 메서드를 이용해서 동등 객체인지 판단한다.
+ */
+
 public class HashSetExample {
 	public static void main(String[] args) {
 		HashSet hashSet = new HashSet();
