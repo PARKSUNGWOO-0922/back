@@ -1,6 +1,17 @@
 package ch14_컬렉션.ex11_Comparator;
 
 import java.util.TreeSet;
+/**
+ * java.util.Comparator 인터페이스
+ *  - 비교 기능이 없는 Comparable 비구현 객체 저장
+ * 
+ *  	TreeSet<E> treeSet = new TreeSet<E>( new ComparatorImpl() );
+ *  	TreeMap<K,V> treeMap = new TreeMap<K,V>( new ComparatorImpl() );
+ *  
+ *  	int compare(T o1, T o2)
+ *  		: o1과 o2가 동등하다면 0, o1이 o2보다 앞에 오게 하려면 음수, 뒤에 오게 하려면 양수 리턴
+ *  
+ */
 
 public class ComparatorExample {
 	public static void main(String[] args) {
