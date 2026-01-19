@@ -13,6 +13,9 @@ import java.util.List;
  *     
  */
 public class ReductionExample {
+	//“Student 객체들을 여러 개 만들어서
+	//그걸 List 형태로 묶고,
+	//그 묶음을 studentList 라는 이름으로 쓰겠다.”
 	public static void main(String[] args) {
 		List<Student> studentList = Arrays.asList(
 				new Student("홍길동", 92),

@@ -12,10 +12,16 @@ import java.util.Arrays;
  */
 public class MatchingExample {
 	public static void main(String[] args) {
-		int[] intArr = { 2, 4 ,6 };
-		
+		int[] intArr = { 2,3,4,5,6 };
+		//Arrays 클래스에 있는
+		//stream이라는 메서드를 사용해서
+		//intArr 배열을 스트림으로 바꾼다
+		//result는 중간 결과 ❌,전체 판단의 최종 결론만 담음
 		boolean result = Arrays.stream(intArr)
-			.allMatch(a -> a%2==0);
+				.peek(a -> System.out.println(a))// 궁금해서 임의추가한것임.
+			.allMatch(a -> a%2==0);//“그 스트림에 들어 있는 모든 값이 이 조건을 만족하는지 검사해서
+									//true 또는 false를 달라”
+									//조건이 false가 되는 순간 즉시 종료
 		System.out.println("모두 2의 배수인가? " + result);
 		
 		result = Arrays.stream(intArr)
