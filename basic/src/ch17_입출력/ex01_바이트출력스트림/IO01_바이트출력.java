@@ -41,20 +41,29 @@ import java.io.OutputStream;
  */
 // 10, 20, 30이 저장된 바이트를 파일 C:/Temp/test1.db로 출력해서 저장
 // 실행 전에 C:/Temp 디렉토리가 있어야 한다.
-public class Io01_바이트출력 {
+public class IO01_바이트출력 {
 	public static void main(String[] args) {
 		try {
-			OutputStream os = new FileOutputStream("C:/Temp/test1.db");
+			OutputStream os = new FileOutputStream("C:/sungwoo/git/back/basic/src/ch17_입출력/Temp/test1.db");
 				
 			byte a = 10;
 			byte b = 20;
 			byte c = 30;
-			
+			byte d = 40;
+			//데이터 쓰기
+			//	-저장된 파일(test1.txt)에 1바이트씩 차례로 출력
+			//	-이때 저장되는 값은 문자가 아니라 숫자(Binary) 데이터이다
 			os.write(a);
 			os.write(b);
 			os.write(c);
-			
+			os.write(d);
+			//버퍼 비우기
+			//	-출력 버퍼에 남아있을수 있는 잔류 데이터를 
+			//	 강제로 모두 파일로 내보낸다.
 			os.flush();
+			//스트림 닫기
+			//	-사용자 시스템 자원을 반납
+			// 	- 닫지않으면
 			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
