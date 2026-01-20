@@ -30,9 +30,17 @@ public class Ex02_예외처리 {
 			int result = data.length();
 			System.out.println("문자 수: " + result);
 		} catch (NullPointerException e) {
+			//e: 발생한 NullPointerException 객체를 참조하는 변수로, 오류 정보를 담고있음.
 			System.out.println(e.getMessage());
+			//위결과:Cannot invoke "String.length()" because "data" is null
+			
 			//System.out.println(e.toString());
+			//위결과:java.lang.NullPointerException: Cannot invoke "String.length()" because "data" is null
+			
 			//e.printStackTrace();
+			//위결과:java.lang.NullPointerException: Cannot invoke "String.length()" because "data" is null
+			      //at ch10_예외.Ex02_예외처리.printLength(Ex02_예외처리.java:30)
+			      //at ch10_예외.Ex02_예외처리.main(Ex02_예외처리.java:48)
 		}finally {
 			System.out.println("[마무리 실행]");
 		}
