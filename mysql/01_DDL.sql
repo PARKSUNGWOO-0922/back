@@ -3,7 +3,7 @@
 -- ctrl+enter : 커서가 있는 위치에 문장하나 실행 또는 블록설정하여 두개이상 문장실행
 -- 문장 끝은 세미콜론;
 CREATE SCHEMA `mydb` DEFAULT CHARACTER SET utf8mb4 ;
-USE mydb;
+ USE mydb;
 /*
 	DB  구축: DDL
 		1. 사용자 정의 : root, park
@@ -56,6 +56,7 @@ USE mydb;
 -- 1. 회원 정보(회원 아이디,이름,나이,성별,가입일자)를 저장하는 member 테이블을 생성하시오.
 -- 윈도우 시스템에서 MYSQL 은 대소문자를 구별하지 않는다
 -- 명령어는 대문자로 (관례)
+
 CREATE TABLE member (
 	member_id INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(50),
