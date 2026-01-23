@@ -218,7 +218,7 @@ name VARCHAR(30)
 INSERT INTO test  VALUES (1,'A');
 INSERT INTO test  VALUES (2,'B');
 INSERT INTO test  VALUES (3,'C');
--- 세이프 모드 해제
+-- 세이프 모드 해제 DELETE FROM ..->WHERE 안쓰고 실행가능하게
 SET SQL_SAFE_UPDATES = 0;
 -- 3.트랜젝션 시작
 START TRANSACTION;  
@@ -228,8 +228,8 @@ TRUNCATE TABLE test;
 -- 5. 데이터 확인(조회)
 SELECT * FROM test;
 -- 6. 트랜젝션 종료: COMMIT 또는 ROLLBACK
-COMMIT;
-ROLLBACK;
+COMMIT; -- 전부 성공, 확정
+ROLLBACK; -- 전부 취소, 원래 상태로
 -- 15. member 테이블 구조와 데이터를 복사하여 member_backup 테이블을 생성하시오.
 CREATE TABLE member_backup AS SELECT * FROM member;
 
