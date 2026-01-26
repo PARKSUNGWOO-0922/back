@@ -4,6 +4,7 @@
 -- 문장 끝은 세미콜론;
 
 -- 스키마(DB)생성
+-- CREATE {DATABASE| SCHEMAS}[IF NOT EXISTS] db name;
 CREATE SCHEMA `mydb` DEFAULT CHARACTER SET utf8mb4 ;
  USE mydb;
  -- 스키마 삭제
@@ -39,7 +40,8 @@ CREATE SCHEMA `mydb` DEFAULT CHARACTER SET utf8mb4 ;
 					  CHAR(n) 고정길이 예)주민번호
                       VARCHAR(n) 가변길이 예)이름
 				3.날짜/시간
-					  DATETIME 로컬 시간
+					  DATE:날짜만	
+					  DATETIME 날짜와시간()로컬 시간
 					  TIMESTAMP UTC기준
 				4.불리언
 					  BOOLEAN  -> TINYINT(1)  Tinyint(1) 은 그값이 1이상인 경우 True를 반환하며 0인 경우 False를 반환한다.
@@ -49,12 +51,12 @@ CREATE SCHEMA `mydb` DEFAULT CHARACTER SET utf8mb4 ;
 					  MEDIUMBLOB 16MB - 일반 이미지	
                       LONGBLOB 4GB - 고화질 이미지, 동영상
 			제약 조건
-					  1.NOT NULL 빈값(NULL)을 허용하지 않음 -> 필수 입력
-                      2.UNIQUE 중복 값을 허용X ->유일성, 단NULL은 허용
-                      3.PRIMARY KEY(PK):기본키(PK) -> 행 구별, 중복X(유일성)
-					  4.FOREIGN KEY(FK):외래키(FK)
-					  5.CHECK
-					  6.DEFAULT
+				1. NOT NULL: 빈 값(NULL)을 허용하지 않음 -> 필수 입력
+                2. UNIQUE: 중복 값을 허용x -> 유일성(UQ), 단 NULL은 허용!
+                3. PRIMARY KEY: 기본키(PK) -> 행 구별, 중복x(유일성)
+                4. FOREIGN KEY: 외래키(FK)
+                5. CHECK: 입력되는 값이 특정 조건(예, price>0)을 만족하는지 검사
+                6. DEFAULT: 값을 입력하지 않았을 때 자동으로 들어갈 값
 			기타 속성
 					  1.AUTO_INCREMENT: 자동으로 1씩 증가(1,2,3,...) -> 기본키를 지정한 컬럼에 설정한다.
                       
@@ -63,12 +65,14 @@ CREATE SCHEMA `mydb` DEFAULT CHARACTER SET utf8mb4 ;
 -- 윈도우 시스템에서 MYSQL 은 대소문자를 구별하지 않는다
 -- 명령어는 대문자로 (관례)
 
-CREATE TABLE member (
-	member_id INT PRIMARY KEY AUTO_INCREMENT,
-	name VARCHAR(50),
-    age INT,
-    gender CHAR(1),
-    regdate DATE
+-- 테이블 생성
+-- 테이블/컬럼 이름에 백틱(`)은 생략 가능
+CREATE TABLE `member` (
+	`member_id` INT PRIMARY KEY AUTO_INCREMENT, 
+    `name` VARCHAR(50), 
+    `age` INT, 
+    `gender` CHAR(1), 
+    `regdate` DATE
 );
 
 -- 2. 이름(product_name)은 필수 입력인 product 테이블을 생성하시오.
@@ -101,7 +105,7 @@ CREATE TABLE board (
 );
 -- 4. 이메일(email)이 중복되지 않는 user 테이블을 생성하시오.
 CREATE TABLE user (
-	user_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(100) UNIQUE,
     password VARCHAR(100)
 );
@@ -162,13 +166,24 @@ RENAME TABLE member TO customer;
 /*구분			ALTER TABLE ... RENAME TO			RENAME TABLE
 주요 목적			테이블 구조 변경의 일환	        		테이블 이름 변경 전용
 다중 변경			한 번에 한 테이블만 가능	        		한 번에 여러 테이블 변경 가능
-데이터베이스 이동	불가능 (이름만 변경)					다른 DB로 테이블 이동 가능
+데이터베이스 		이동	불가능 (이름만 변경)					다른 DB로 테이블 이동 가능
 트랜잭션/잠금		테이블 전체에 잠금이 발생할 수 있음			매우 빠르고 원자적(Atomic)으로 작동
 */
 
 /*
 	테이블 삭제
 	DROP TABLE 테이블명;
+    
+    member 테이블과 orders 테이블은 관계 설정되어 있고
+    member 테이블 member_id 가 기본키로,
+    orders 테이블으 member_id가 외래키로 설정되어 있으면
+    
+    member테이블이 삭제되지 않는다.
+    현재 삭제하려는 member테이블이 orders 테이블과 종속 관계에 있으며,
+    member 테이블은 상위 테이블 이믈 삭제할수 없음
+    
+    종속관계에서 상위 테비을을 삭제하고 싶으면
+    하위테이블과의 종속관계를 제저하고..(예.02_select 윗부분참조)
 */
 -- 13. product 테이블을 삭제하시오.
 DROP TABLE product;

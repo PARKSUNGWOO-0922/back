@@ -2,11 +2,11 @@
 DROP TABLE member;
 DROP TABLE board;
 DROP TABLE product;
-DROP TABLE orders;
--- 참조 무결성 때문에 orders 테이블을 먼저 삭제한다.
--- 왜래키(px)가 지정되어있는 테이블을 먼저 삭제
--- member 테이블보다 먼저 삭제한다
 
+-- 참조 무결성 때문에 orders 테이블을 먼저 삭제한다.
+-- orders 테이블은 외래키(FK)가 지정되어있어
+-- member 테이블보다 먼저 삭제한다.
+DROP TABLE orders;
 -- 테이블 생성
 CREATE TABLE member (
   member_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -53,8 +53,22 @@ CREATE TABLE orders (
         4.DELETE FROM 테이블명
 			-삭제 -> Delete
 */
+/* 
 
--- 데이터(행, 튜플) 삽입하기
+    하나의 INSERT 문에 소괄호로 묶은 VALUES값을 사용하면
+    하나의 INSERT 구문으로 데이터를 여러 행 입력할 수 있어
+    INSERT INTO 테이블명 [(열1, 열2, ...)]
+    VALUES [(값1, 값2, ...), (값1, 값2, ...), ...];
+      - 테이블 뒤에 열 이름을 생략하려면
+        VALUES문 뒤에 테이블의 열 순서와 개수에 맞춰 데이터를 채워야 함
+
+    INSERT INTO 테이블명 (member_id, name, age, gender, point, grade, regdate) 
+    VALUES (1,'홍길동',35,'M',500,'VIP','2023-01-01');
+
+    INSERT INTO 테이블명 (age, name, gender, point, grade) 
+    VALUES (35,'홍길동','M',500,'VIP');
+*/
+-- 데이터(행, 튜플, 레코드) 삽입하기
 INSERT INTO member VALUES
 (1,'홍길동',35,'M',500,'VIP','2023-01-01'),
 (2,'이순신',22,'M',200,'BRONZE','2022-01-01'),
@@ -80,7 +94,7 @@ INSERT INTO orders VALUES
 (4,5,300000,'주문완료','2025-02-01');
 
 -- 조회 하기
--- SELECT * FROM [스키마.]테이블;->*는 모든컬럼
+-- SELECT * FROM [스키마.]테이블;->*는 모든필드
 -- 서로 다른 스키마에서 같은 이름의 테이블이 없다면 스키마명은 생략 가능.
 SELECT * FROM mydb.member;
 SELECT * FROM board;
@@ -95,7 +109,7 @@ SELECT name, age FROM member;
 -- 3. 등급이 VIP인 회원을 조회하시오.(절로 나누어 아래로 쓰는 경향이 있음)
 SELECT * 
 FROM member 
-WHERE grade = 'VIP'; -- VIP로만 쓰면 변수로 인식 error
+WHERE grade = 'VIP'; -- VIP로만 쓰면 변수로 인식 error -- 문자열은 ' 또는 "로 묶는다.
 -- 4. 나이가 30 이상인 회원을 조회하시오.
 SELECT * 
 FROM member 
@@ -104,20 +118,157 @@ WHERE age >= 30;
 SELECT * 
 FROM member 
 WHERE gender = 'F' AND point >= 500;
+
+/* 
+    MySQL에서 문자열 데이터를 조회할 때 대소문자 구분 여부
+    -> 데이터 타입과 콜레이션(Collation) 설정에 따라 결정된다.
+
+    utf8mb4_general_ci
+      1) _ci(Case Insensitive): 대소문자 구별x
+      2) _cs(Case Sensitive): 대소문자 구별
+      3) _bin(Binary): 데이터를 이진값으로 비교, 대소문자 구별
+    
+    BLOB, BINARY 데이터 타입은 콜레이션 설정과 관계없이 대소문자를 구분한다.
+    부울값(TRUE, FALSE)은 TINYINT(1) 데이터 타입이므로
+    -> 콜레이션 설정과 관계없이 대소문자를 구분하지 않는다.
+
+
+ */
 -- 6. 등급이 GOLD 또는 VIP인 회원을 조회하시오.
+
+SELECT * FROM member 
+WHERE grade = 'GOLD' OR grade = 'VIP';
+
+SELECT * FROM member 
+WHERE grade IN( 'GOLD' , 'VIP');
+/* 
+    범위/집합 연산자
+     BETWEEN A AND B -> A와 B 사이 (A,B포함)
+  
+ */
 -- 7. 포인트가 200~800 사이인 회원을 조회하시오.
--- 8. 등급이 BRONZE, SILVER인 회원을 조회하시오.
+SELECT * FROM member
+WHERE point >= 200 AND point <= 800;
+
+SELECT * FROM member
+WHERE point BETWEEN 200 AND  800;
+-- 8. 등급이 BRONZE, SILVER인 회원의 이름과 등급만 조회하시오.
+SELECT name,grade FROM member
+WHERE grade = 'BRONZE' OR grade = 'SILVER';
+
+SELECT name,grade FROM member
+WHERE grade IN ('BRONZE' , 'SILVER');
 
 -- board 테이블
--- 9. 제목에 '테스트'가 포함된 게시글을 조회하시오.
+/* 
+  패턴 연산자
+    % 0개 이상의 문자
+    _ 1개문자
+
+    예)'테스트'가 포함된 -> %테스트%
+    예)'테스트'로 시작하는 -> 테스트%
+    예)'테스트'로 끝나는 -. %테스트
+    예)'테스트'로 시작하는 4자리문자 -> 테스트_ 
+ */
+-- 9. 제목에 '테스트'가 포함된 게시글을 조회하시오
+SELECT * FROM board
+WHERE title LIKE '%테스트%';
 
 -- product 테이블
+/* 
+  NULL 관련 연산자
+    IN NULL     -> NULL 이다
+    IS NOT NULL -> NULL이 아니다
+ */
 -- 10. 카테고리가 NULL인 상품을 조회하시오.
--- 11. 회원을 포인트 내림차순으로 조회하시오.
--- 12. 포인트 상위 3명의 회원을 조회하시오.
--- 13. 회원의 평균 포인트를 조회하시오.
+SELECT * FROM product
+WHERE category IS NULL;
+/* 
+  SELECT 컬럼1,컬럼2,...
+  FROM 테이블명
+  [WHERE 조건]
+  [ORDER BY 컬럼 ASC|DESC]
+
+    - 정렬:ASC(오름차준,기본값(생략시)),DESC(내림차순)
+ */
+-- 11. member 테이블에서 회원을 포인트 내림차순으로 조회하시오.(product에 point필드가 읍따)
+SELECT * FROM member
+ORDER BY point DESC; -- 내림차순
+
+SELECT * FROM member
+ORDER BY point ; -- 오름차순
+
+/* 
+  SELECT 컬럼1,컬럼2,...
+  FROM 테이블
+  WHERE 조건
+  ORDER BY 컬럼 [ASC] [DESC]
+  LIMIT 행수;
+ */
+-- 12. member 테이블에서 포인트 상위 3명의 회원을 조회하시오.
+SELECT * FROM member
+ORDER BY point DESC
+LIMIT 3; -- 포인트(point) 상위 3명의 회원 조회
+/* 
+  집계 함수
+    1.count(컬럼)       행의 수 (NULL제외)
+        -count(*)       전체 행 수(NULL 포함)
+    2.sum(숫자컬럼)     합계(NULL 제외)
+    3.age(숫자컬럼)     평균(NULL 제외)
+    4.max(컬럼)         최대값   
+    4.min(컬럼)         최솟값   
+ */
+ /* 
+    SELECT 컬럼 [AS 별칭], 컬럼2 [AS 별칭],...
+    FROM 테이블;
+  */
+-- 13. member 테이블에서 회원의 평균 포인트를 조회하시오.
+SELECT AVG(point) AS 평균 FROM  member;
+
+
+/* 
+    SELECT 컬럼1, 컬럼2,...
+    FROM 테이블
+    WHERE 조건
+    GROUP BY 컬럼 HAVING 그룹조건
+    ORDER BY 컬럼
+    LIMIT 행수
+
+
+
+
+    -LIMIT는 MySQL 전용!
+
+ */
 -- 14. 등급별 회원 수를 조회하시오.
+SELECT count(member_id) AS `회원 수`FROM member; --회원 수 처럼 공간이 있을대 `(백틱)사용한다.
+SELECT grade, count(*) FROM member -- member 테이블에서 grade별로 묶어서 각 grade에 몇 명 있는지 세어라
+GROUP BY grade;
+
 -- 15. 회원 수가 2명 이상인 등급만 조회하시오.
+SELECT grade as 등급, count(*) as 인원수 FROM member
+GROUP BY grade HAVING  COUNT(*) >= 2;
+
+SELECT grade, COUNT(*) AS cnt
+FROM member
+GROUP BY grade
+HAVING COUNT(*) >= 2;
+
+/* 
+  서브쿼리
+   SELECT 컬럼
+   FROM 테이블
+   WHERE 컬럼 = (SELECT문장)
+
+   SELECT 컬럼
+   FROM (SELECT문장)
+   WHERE 컬럼
+
+   SELECT 컬럼 , (SELECT문장) AS 별칭
+   FROM 테이블
+   WHERE 컬럼
+ */
+
 -- 16. 평균 포인트 이상인 회원을 조회하시오.
 
 -- orders 테이블
