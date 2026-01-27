@@ -1,3 +1,4 @@
+-- Active: 1769391941753@@127.0.0.1@3306@mydb
 -- 테이블 삭제
 DROP TABLE member;
 DROP TABLE board;
@@ -234,7 +235,13 @@ SELECT AVG(point) AS 평균 FROM  member;
     ORDER BY 컬럼
     LIMIT 행수
 
+   WHERE와 HAVING의 가장 큰 차이점은 "필터링을 하는 시점"에 있습니다. WHERE는 그룹화 전에 개별 행을 필터링하고, HAVING은 그룹화 후에 집계된 결과를 필터링합니다
 
+   SELECT 컬럼, 집계함수(컬럼)
+FROM 테이블명
+WHERE 개별_행_조건        -- 1단계: 전체 데이터에서 필요한 행만 먼저 뽑음
+GROUP BY 그룹화할_컬럼    -- 2단계: 뽑힌 데이터를 그룹으로 묶음
+HAVING 그룹_결과_조건     -- 3단계: 묶인 그룹 중에서 조건에 맞는 그룹만 남김
 
 
     -LIMIT는 MySQL 전용!
@@ -256,6 +263,15 @@ HAVING COUNT(*) >= 2;
 
 /* 
   서브쿼리
+  1.반드시 괄호()로 감싼다.
+  2.안쪽 쿼리(서브쿼리)가 먼저 실행된다.
+  3.select,from,where 등 열 위치에서 사용된다.
+  4.스칼라 서브쿼리 -> select절의 서브쿼리
+  5.인라인 뷰 -> from 절의 서브쿼리
+  6.AS절:별칭(Alias) 부여
+    -AS 절의 생략 여부:
+      테이블은 생략권장,컬럼의 별창은 사용권장(관례)
+
    SELECT 컬럼
    FROM 테이블
    WHERE 컬럼 = (SELECT문장)
@@ -270,12 +286,61 @@ HAVING COUNT(*) >= 2;
  */
 
 -- 16. 평균 포인트 이상인 회원을 조회하시오.
+-- 기록순서:SELECT절 -> FROM절 -> WHERE절
+-- 실행순서:FROM절 -> WHERE절 -> SELECT절
+-- member 테이블로부터 point가 평균(member 테이블로 부터 point 평균을 조회한다)이상인 모든 컬럼을 조회한다.
+
+
+SELECT AVG(point) FROM member;
+SELECT * FROM member
+WHERE point >= (SELECT AVG(point) FROM member);
 
 -- orders 테이블
 -- 17. 주문을 한 회원의 정보만 조회하시오.
+SELECT member_id FROM orders; --1,2,3,5
+SELECT * FROM member
+WHERE member_id IN(SELECT member_id FROM orders); 
+/* 
+  조인(join)
+   - 둘 이상의 테이블을 연결
+   - 키(Key):PK(기본키),FK(외래키)
+    1 내부 조인(INNER JOIN)
+    2 외부 조인
+      -왼족 (외부) 조인(LEFT OUTER JOIN)
+      -오른쪽 (외주)조인(RIGHT OUTER JOIN)
+
+    SELECT 컬럼
+    FROM 테이블a [INNER] JOIN 테이블b [ON 테이블a.컬럼 = 테이블b.컬럼]
+    WHERE 조건
+
+    SELECT 컬럼
+    FROM 테이블a LEFT JOIN 테이블b [ON 테이블a.컬럼 = 테이블b.컬럼]
+    WHERE 조건
+ */
 -- 18. 주문 정보와 회원 이름을 함께 조회하시오.
+SELECT * FROM orders;
+SELECT * FROM member;
+SELECT * FROM member JOIN orders; --20table 모두출력
+SELECT name,order_id,total_price FROM member JOIN orders; --20table name,order_id,total_price 컬럼만 출력
+SELECT name,order_id,total_price FROM member JOIN orders ON member.member_id = orders.member_id; --정상 출력
+SELECT member.member_id,name,order_id,total_price FROM member JOIN orders ON member.member_id = orders.member_id; --정상 출력
+SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m JOIN orders o ON m.member_id = o.member_id; --정상 출력(필드명 간략화한 별칭 표현) 구분이명확안경우 생략가능.
+
 -- 19. 주문이 없는 회원도 포함하여 조회하시오.
--- 20. 주문 상태의 종류를 중복 없이 조회하시오.
+SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m LEFT JOIN orders o ON m.member_id = o.member_id; -- NULL(주문없는) 도표시
+SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m LEFT JOIN orders o ON m.member_id = o.member_id WHERE o.member_id is NOT NULL; -- NULL 아닌것만 표시
+SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m LEFT JOIN orders o ON m.member_id = o.member_id WHERE o.member_id is NULL; -- NULL 인것만 표시
+/* 
+  SELECT 컬럼1 DISTINT 컬럼2,...
+  FROM 테이블1 JOIN 테이블2 ON  조건
+  WHERE 조건
+  GROUP BY 컬럼 HAVING 그룹조건
+  ORDER BY 컬럼 ASC| DESC
+  LIMIT 행수;
+ */
+-- 20. 주문 상태(status)의 종류를 중복 없이(distint) 조회하시오.
+SELECT DISTINCT status FROM orders;
+
 
 
 
