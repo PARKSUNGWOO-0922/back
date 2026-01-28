@@ -160,6 +160,9 @@ WHERE grade = 'BRONZE' OR grade = 'SILVER';
 SELECT name,grade FROM member
 WHERE grade IN ('BRONZE' , 'SILVER');
 
+SELECT name FROM member 
+WHERE (name BETWEEN '가' AND '나')  -- '가'부터 '나' 직전까지 (ㄱ으로 시작하는 모든 성)
+   OR (name BETWEEN '아' AND '자'); -- '아'부터 '자' 직전까지 (ㅇ으로 시작하는 모든 성)
 -- board 테이블
 /* 
   패턴 연산자
@@ -258,8 +261,8 @@ GROUP BY grade HAVING  COUNT(*) >= 2;
 
 SELECT grade, COUNT(*) AS cnt
 FROM member
-GROUP BY grade
-HAVING COUNT(*) >= 2;
+GROUP BY grade -- 같은 등급을 가진 회원들을 하나로 묶습니다. (예: 'Gold'끼리, 'Silver'끼리)
+HAVING COUNT(*) >= 2; -- 묶인 그룹 중에서 인원수가 2명 이상인 그룹만 남깁니다.
 
 /* 
   서브쿼리
@@ -327,6 +330,9 @@ SELECT member.member_id,name,order_id,total_price FROM member JOIN orders ON mem
 SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m JOIN orders o ON m.member_id = o.member_id; --정상 출력(필드명 간략화한 별칭 표현) 구분이명확안경우 생략가능.
 
 -- 19. 주문이 없는 회원도 포함하여 조회하시오.
+-- LEFT JOIN: 왼쪽 원은 온전하고, 오른쪽 원은 겹치는 부분만 남습니다.
+-- RIGHT JOIN: 오른쪽 원은 온전하고, 왼쪽 원은 겹치는 부분만 남습니다.
+-- 매칭되는 데이터가 없으면 NULL 표시
 SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m LEFT JOIN orders o ON m.member_id = o.member_id; -- NULL(주문없는) 도표시
 SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m LEFT JOIN orders o ON m.member_id = o.member_id WHERE o.member_id is NOT NULL; -- NULL 아닌것만 표시
 SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m LEFT JOIN orders o ON m.member_id = o.member_id WHERE o.member_id is NULL; -- NULL 인것만 표시
@@ -340,6 +346,12 @@ SELECT m.member_id,m.name,o.order_id,o.total_price FROM member m LEFT JOIN order
  */
 -- 20. 주문 상태(status)의 종류를 중복 없이(distint) 조회하시오.
 SELECT DISTINCT status FROM orders;
+
+-- 21.board 테이블의 column을 확인하시오.
+SHOW COLUMNS FROM board; -- 특정 테이블이 어떤 구조(스키마)로 이루어져 있는지를 확인하고 싶을 때 사용합니다.
+                         -- 왜 이 명령어를 사용하나요?
+                         -- 쿼리 작성 전 확인: 앞서 작성하신 grade 컬럼의 정확한 스펠링이나 데이터 타입(문자인지 숫자인지)을 확인할 때 필수 
+
 
 
 
