@@ -117,4 +117,4 @@ SELECT * FROM board;
 DELETE b1
 FROM board b1 JOIN board b2     -- 셀프 조인(Self Join) 같은 테이블을 조인
 ON b1.title = b2.title          -- 1. 제목이 같은 것끼리 짝을 짓는다.
-AND b1.board_no < b2.board_no; ;  --  2. 나(b1)보다 번호가 더 큰 글(b2)이 존재한다면 삭제! / 어차피 순서대로 작성되니까. 물록regdate도 가능
+AND b1.board_no < b2.board_no; ;  --  2. 나(b1)보다 번호가 더 큰 글(b2)이 존재한다면 삭제! / 어차피 순서대로 작성되니까. 물론regdate도 가능
