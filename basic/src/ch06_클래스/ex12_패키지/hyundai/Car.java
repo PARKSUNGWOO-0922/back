@@ -5,7 +5,9 @@ package ch06_클래스.ex12_패키지.hyundai;
 // 자동 임포트: ctrl+shift+o
 import ch06_클래스.ex12_패키지.hankook.SnowTire;
 import ch06_클래스.ex12_패키지.hankook.Tire;
-
+// The import ch06_클래스.ex12_패키지.kumho.Tire collides(충돌하다) with another import statement
+// import ch06_클래스.ex12_패키지.kumho.Tire; // 에러
+// The import ch06_클래스.ex12_패키지.kumho is never used // 경고
 /**
 * 26. 패키지(package)
 * 같은 패키지에 있는 클래스는 import 없이 사용할 수 있으나,
@@ -18,10 +20,6 @@ import ch06_클래스.ex12_패키지.hankook.Tire;
 //만약 동일한 패키지에 다수의 클래스를 사용하는 경우 클래스명을 생략하고 *을 사용할 수 있다.
 // *는 패키지 안의 모든 클래스를 가리킨다.
 import ch06_클래스.ex12_패키지.kumho.AllSeasonTire;
-// The import ch06_클래스.ex12_패키지.kumho.Tire collides(충돌하다) with another import statement
-// import ch06_클래스.ex12_패키지.kumho.Tire; // 에러
-// The import ch06_클래스.ex12_패키지.kumho is never used // 경고
-import ch06_클래스.ex12_패키지.kumho.*;
 
 
 /**
