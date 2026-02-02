@@ -1,7 +1,5 @@
 package ch06_클래스.ex13_접근제한자.package1;
 
-import java.awt.image.AreaAveragingScaleFilter;
-
 /**
  * 27.접근 제한자
  * 					제한 대상					제한 범위
