@@ -32,6 +32,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public class Car {
 	//필드
 	private int speed;
@@ -77,24 +78,5 @@ public class Car {
 //		this.stop = stop;
 //		if (stop == true) this.speed = 0;
 //	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

@@ -10,7 +10,7 @@ public class CarMain {
 		int result = myCar.getSpeed();//읽기
 		System.out.println("현재 속도는 " + result + " km입니다.");
 		
-		myCar.setSpeed(50);//쓰기(수정)
+		myCar.setSpeed(80);//쓰기(수정)
 		result = myCar.getSpeed();//읽기
 		System.out.println("현재 속도는 " + result + " km입니다.");
 		

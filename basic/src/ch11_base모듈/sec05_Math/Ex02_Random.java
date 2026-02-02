@@ -9,6 +9,12 @@ import java.util.Random;
  * 
  *   	int num = (int) (Math.random() * n) + start
  *   
+ *   	예) 1~6까지 주사위의 눈
+ *   		(int) (Math.random() * 6) + 1
+ *   	예) 1~45까지 로또 번호
+ *   		(int) (Math.random() * 45) + 1
+ *   
+ *   
  * java.util.Random
  *  - boolean, int, double 난수를 얻을 수 있다.
  *  
@@ -27,21 +33,29 @@ import java.util.Random;
  *    	int nextInt(int n): int 타입의 난수 리턴(0<=~<n)
  *   
  */
-public class RandomExample {
+public class Ex02_Random {
 	public static void main(String[] args) {
 		//선택번호
 		int[] selectNumber = new int[6];
-		Random random = new Random(3);
+		//Random random = new Random();
+		
+//		double rand = Math.random(); // 0.0<=x<1.0
+//		rand = Math.random() * 45; // 0.0<=x<45.0
+//		int randInt = (int)(Math.random() * 45); // 0<=x<45 사이의 정수
+		//int lotoNum = (int)(Math.random() * 45) + 1; // 1<=x<46 사이의 정수
+		//System.out.println(lotoNum);
+		
 		System.out.print("선택번호: ");
 		for(int i=0; i<6; i++) {
-			selectNumber[i] = random.nextInt(45) + 1;
+			//selectNumber[i] = random.nextInt(45) + 1;
+			selectNumber[i] = (int)(Math.random() * 45) + 1;
 			System.out.print(selectNumber[i] + " ");
 		}
 		System.out.println();
 
 		//당첨번호
 		int[] winningNumber = new int[6];
-		random = new Random(5);
+		Random random = new Random(5);
 		System.out.print("당첨번호: ");
 		for(int i=0; i<6; i++) {
 			winningNumber[i] = random.nextInt(45) + 1;

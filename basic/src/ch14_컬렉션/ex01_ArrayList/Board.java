@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+//롬복 적용확인
 @Getter
 @Setter
 @AllArgsConstructor

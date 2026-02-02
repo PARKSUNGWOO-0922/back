@@ -20,7 +20,7 @@ import lombok.Value;
  */
 
 //@NoArgsConstructor -> 기본 생성자
-//@AllArgsConstructor -> 모든 필드 생성자
+//@AllArgsConstructor //-> 모든 필드 생성자
 //@RequiredArgsConstructor -> 필수 필드(final, @NonNull) 생성자
 //@ToString
 //@EqualsAndHashCode 
