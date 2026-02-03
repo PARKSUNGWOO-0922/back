@@ -22,6 +22,7 @@ IDENTIFIED BY '1234';
         SELECT 컬럼1, ... FROM DB.테이블;
         SELECT user, host FROM mysql.user;
             - mysql은 MySQL 내부 시스템 DB이다.
+<<<<<<< HEAD
 */
 /*
     1. Host의 정체: "어디서 왔니?"
@@ -48,6 +49,15 @@ FROM mysql.user;
     GRANT : 특정 사용자에게 데이터베이스 객체(테이블, 뷰 등)에 대한 조작 권한을 부여
         예시: GRANT SELECT, INSERT ON employees TO 'user_id';
         설명: 신입 사원이나 특정 애플리케이션 계정에 "읽기"와 "쓰기" 권한만 골라 줄 때 사용합니다
+=======
+*/
+SELECT user, host
+FROM mysql.user;
+
+-- 권한 부여
+-- 3. user1에게 mydb 데이터베이스의 모든 권한(ALL PRIVILEGES)을 부여하시오.
+/* 
+>>>>>>> d533d8cb3746d31d430533ff9a20ad6ef9e22d8d
     DBA 역할
         GRANT 권한유형
         ON DB명.테이블명
@@ -69,11 +79,14 @@ TO 'user1'@'localhost';
 SHOW GRANTS FOR 'user1'@'localhost';
 
 -- REVOKE: 권한 회수
+<<<<<<< HEAD
 -- GRANT로 주었던 권한을 다시 뺏어올 때 사용
 /*
     예시: REVOKE DELETE ON orders FROM 'user_id';
     설명: "너 이제 삭제는 못 해"라고 권한을 박탈하는 직관적인 명령어입니다.
 */
+=======
+>>>>>>> d533d8cb3746d31d430533ff9a20ad6ef9e22d8d
 -- 6. user1에게서 member 테이블의 SELECT 권한을 회수하시오.
 /* 
     권한 회수
