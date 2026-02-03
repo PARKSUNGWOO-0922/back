@@ -25,8 +25,8 @@ INSERT INTO employee VALUES
     조인(JOIN)
         1.내부 왜부 : [inner] join
         2. 외부 조인
-            -...나머지는 복사하자.
-
+            - 왼쪽 외부 조인: left [outer] join
+            - 오른쪽 외부 조인: right [outer] join
 
 
 */
