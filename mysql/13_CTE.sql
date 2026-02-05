@@ -320,3 +320,30 @@ FROM dept_avg a
 JOIN department d ON a.dept_id = d.dept_id
 JOIN company_avg c
 WHERE a.avg_salary > c.total_avg;
+-- 8-1 부서평균과 회사평균을 같이 출력하고 싶을때
+/*
+    무엇이 바뀌었나요?
+    dept_avg → a.avg_salary: a라는 테이블 별명 안에 있는 avg_salary 컬럼을 가져오라고 정확히 집어줬어요.
+
+    company_avg → c.total_avg: c라는 테이블 안에 있는 total_avg 컬럼을 가져오라고 수정했어요.
+
+    CROSS JOIN: company_avg는 행이 딱 하나뿐이라 ON 조건이 필요 없죠? 이럴 땐 쉼표(,) 
+    대신 CROSS JOIN이라고 써주면 "아, 이건 의도적으로 
+    모든 행에 다 붙이려는 거구나"라고 다른 사람이 읽기 훨씬 좋아져요.
+*/
+WITH dept_avg AS (
+    SELECT dept_id, AVG(salary) AS avg_salary
+    FROM employee
+    GROUP BY dept_id
+),
+company_avg AS (
+    SELECT AVG(salary) AS total_avg FROM employee
+)
+SELECT 
+    d.dept_name, 
+    a.avg_salary AS 부서평균, 
+    c.total_avg AS 회사평균
+FROM dept_avg a
+JOIN department d ON a.dept_id = d.dept_id
+CROSS JOIN company_avg c
+WHERE a.avg_salary > c.total_avg;
