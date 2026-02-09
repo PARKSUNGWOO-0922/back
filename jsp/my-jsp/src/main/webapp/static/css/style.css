@@ -1,0 +1,10 @@
+@charset "utf-8";
+body,p{
+    margin: 0;
+}
+button {
+    border: none;
+    background-color: #ff9204;
+    cursor: pointer;
+    padding: 4px 12px;
+}

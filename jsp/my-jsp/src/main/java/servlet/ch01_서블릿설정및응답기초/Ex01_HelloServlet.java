@@ -1,4 +1,4 @@
-package controller;
+package servlet.ch01_서블릿설정및응답기초;
 // jakarta 톰캣 10.0+
 //
 import jakarta.servlet.ServletException;

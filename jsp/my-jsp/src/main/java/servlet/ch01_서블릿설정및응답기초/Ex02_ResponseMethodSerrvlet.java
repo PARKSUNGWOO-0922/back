@@ -1,4 +1,4 @@
-package controller;
+package servlet.ch01_서블릿설정및응답기초;
 
 /*
  * 한글 응답 설정
@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 
 
 @WebServlet("/mime") // servlet만든후 next버튼 누르고 url..eidt버튼클릭 수정
-public class Ex02_MimeServlet extends HttpServlet {
+public class Ex02_ResponseMethodSerrvlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
