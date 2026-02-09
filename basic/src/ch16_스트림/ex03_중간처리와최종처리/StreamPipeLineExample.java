@@ -23,6 +23,18 @@ import java.util.List;
  */
 public class StreamPipeLineExample {
 	public static void main(String[] args) {
+		//asList 배열처럼 쓴 값들을 → List 로 바꿔주는 도구
+		/*
+			Arrays.asList()는
+			“빠르게 테스트용 List를 만들기 위한 도구” : 즉 추가/삭제 불가능
+			“Stream 예제에서 단골 손님”
+
+			안쓰면 
+			List<Student> list = new ArrayList<>();
+			list.add(new Student("홍길동", 10));
+			list.add(new Student("신용권", 20));
+			list.add(new Student("유미선", 30)); 이렇게 복잡하고 길어짐.
+		*/
 		List<Student> list = Arrays.asList(
 				new Student("홍길동", 10),
 				new Student("신용권", 20),
