@@ -35,6 +35,19 @@ public class Ex02_ResponseMethodSerrvlet extends HttpServlet {
 		 * 톰캣에 따라 이미 꺼낸 펜을 또 꺼내려고 하면 "야, 아까 가져갔잖아!"라며 
 		 * 내부적으로 충돌(IllegalStateException)을 일으키고 500 에러를 뿜을 수 있습니다.
 		 * */
+		
+		/* 
+		갱신이 안되어 이전 내용으로 출력된다면?
+		1. 톰캣 서버 종료
+			- project > clean
+				*Servlet.java -> *Servlet.class 갱신이 안되었을 때
+			- servers > clean
+		2. 웹 브라우저 갱신
+			- ctrl+shift+del -> 캐시 삭제
+	*/
+
+	// HTML: text/html
+	// HTML 태그를 인식하게 컨텐츠 타입 설정
 		out.println(""
 		+"<table style='border:1px solid;'>"
 		+"<tr>"
@@ -42,12 +55,20 @@ public class Ex02_ResponseMethodSerrvlet extends HttpServlet {
 		+ "<td style='border:1px solid;'>Cell 2</td>"
 		+ "</tr>"
 		+ "</table>");
-	}
-
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-	}
+		// 자바스크립트
+				out.println("<script>alert('Hello JavaScript!');</script>");
+
+				// JSON(JavaScript Object Notation)
+				// 예: {"name": "hong"}
+				// 이스케이프 문자: \"
+				response.setContentType("application/json; charset=UTF-8");
+				out.println("{\"name\": \"hong\"}");
+
+			} // doGet() 끝
+
+			protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+			}
 
 }

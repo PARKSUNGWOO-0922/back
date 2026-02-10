@@ -17,10 +17,18 @@ public class Ex02_PostParamServlet extends HttpServlet {
 		1. Get 방식 요청
 			<form [method="get"]>
 			-> 처리는 doGet()
-			******복사
+			- HTTP 메시지는 URL 쿼리스트링으로 전송 (URL에 모든 정보가 노출됨)
+			- 조회(select), 검색, 링크
+			- 북마크(즐겨찾기), 캐싱 가능
+			- 데이터 용량 제한(대략: 2000자)
+			
 		2. Post 방식 요청
 			<form method="post">
 			-> 처리는 doPost()
+			- HTTP 메시지는 요청 본문을 통해 전송
+			- 로그인/회원가입, 데이터 입력(insert)/수정(update)
+			- 북마크(즐겨찾기), 캐싱 불가능
+			- 데이터 용량 제한
 	*/
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

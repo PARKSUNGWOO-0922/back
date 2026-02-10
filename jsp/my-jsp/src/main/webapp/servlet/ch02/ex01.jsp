@@ -12,7 +12,7 @@
         action="자바 서블릿 경로" 
         method="get(기본값)|post"
      -->
-<form action="/my-jsp/postParam" method="post">
+<form action="/my-jsp/getParam" method="get">
     <div>
         <label for="username">이름 : </label>
         <input type="text" name="username" id="username">

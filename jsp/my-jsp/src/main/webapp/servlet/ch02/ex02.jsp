@@ -30,7 +30,7 @@
         <input type="password" name="userpw" id="userpw">
     </div>
     <div>
-    	<h3>취미선택</h3>
+    	<h3>취미 선택:</h3>
         <label><input type="checkbox" name="hobby" value="독서">독서</label>
         <label><input type="checkbox" name="hobby" value="여행">여행</label>
         <label><input type="checkbox" name="hobby" value="영화">영화</label>
