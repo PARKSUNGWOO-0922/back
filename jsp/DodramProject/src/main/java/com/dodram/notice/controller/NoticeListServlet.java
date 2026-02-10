@@ -22,10 +22,10 @@ public class NoticeListServlet extends HttpServlet {
 
  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
      
-	 
+	
 		    List<NoticeDTO> list = new ArrayList<>();
 		    
-		    // 1. DB 접속 정보 설정
+		    
 		    String url = "jdbc:mysql://localhost:3306/doitsql?serverTimezone=UTC&useSSL=false";
 		    String user = "root"; 
 		    String password = "1234"; // <- 이 부분을 꼭 수정하세요!
@@ -35,21 +35,21 @@ public class NoticeListServlet extends HttpServlet {
 		    ResultSet rs = null;
 
 		    try {
-		        // 2. MySQL 드라이버 로드
+		       
 		        Class.forName("com.mysql.cj.jdbc.Driver");
 		        
-		        // 3. DB 연결
+		        
 		        conn = DriverManager.getConnection(url, user, password);
 		        
-		        // 4. SQL 쿼리 작성 (최신글이 위로 오게 번호 내림차순 정렬)
-		        String sql = "SELECT id, title, writer, reg_date, check_num, addr FROM notice ORDER BY id DESC";
+		       
+		        String sql = "SELECT id, title, writer, reg_date AS date, check_num, addr FROM notice ORDER BY id DESC";
 		        pstmt = conn.prepareStatement(sql);
 		        
-		        // 5. 쿼리 실행 및 결과 받기
+		       
 		        rs = pstmt.executeQuery();
 
 		        while(rs.next()) {
-		            // DB에서 꺼낸 데이터를 DTO 바구니에 담아 리스트에 추가
+		            
 		            NoticeDTO dto = new NoticeDTO(
 		                rs.getInt("id"),
 		                rs.getString("title"),
@@ -60,16 +60,17 @@ public class NoticeListServlet extends HttpServlet {
 		            );
 		            list.add(dto);
 		        }
+		        
 		    } catch (Exception e) {
 		        e.printStackTrace();
 		    } finally {
-		        // 6. 사용한 자원 닫기 (메모리 아끼기)
+		       
 		        try { if(rs != null) rs.close(); } catch(Exception e) {}
 		        try { if(pstmt != null) pstmt.close(); } catch(Exception e) {}
 		        try { if(conn != null) conn.close(); } catch(Exception e) {}
 		    }
 
-		    // 7. JSP로 데이터 배달
+		   
 		    request.setAttribute("noticeList", list);
 		    request.getRequestDispatcher("/notice_list.jsp").forward(request, response);
 		}
