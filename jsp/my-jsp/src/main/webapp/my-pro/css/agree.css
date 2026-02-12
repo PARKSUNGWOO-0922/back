@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #333;
+}
+
+.logo {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.logo h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.slogan {
+    font-size: 14px;
+    color: #666;
+}
+
+.step ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.step li {
+    margin: 0 20px;
+    padding-bottom: 10px;
+    color: #999;
+}
+
+.step .active {
+    color: #008938;
+    border-bottom: 2px solid #008938;
+}
+
+.container {
+    width: 600px;
+    margin: 40px auto;
+}
+
+.desc {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.agree-box label {
+    display: block;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.agree-box textarea {
+    width: 100%;
+    height: 120px;
+    margin-top: 8px;
+    padding: 10px;
+    resize: none;
+}
+
+#confirmBtn {
+    width: 100%;
+    height: 50px;
+    margin-top: 30px;
+    background: #008938;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#confirmBtn.active {
+    opacity: 1;
+}

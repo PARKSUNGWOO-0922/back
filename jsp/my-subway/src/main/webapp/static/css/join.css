@@ -1,0 +1,126 @@
+@charset "utf-8";
+@import url(common.css);
+@import url(header.css);
+@import url(footer.css);
+
+/* header 서브 메뉴 배경색 변경 */
+#header::after {
+    background: #f9f9f9;
+}
+
+/* join.html */
+.join {
+    padding: 160px 0 120px;
+    background: #f6f6f6;
+}
+
+.join-inner {
+    width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* 제목 */
+.join-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--main-color);
+    text-align: center;
+}
+
+.join-desc {
+    margin: 10px 0 40px;
+    text-align: center;
+    color: #777;
+}
+
+/* 폼 */
+.join-form .form-row {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.join-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.join-form input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #ddd;
+    padding: 0 14px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.join-form input:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+
+/* 중복확인 / 인증 버튼 */
+.btn-sub {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    height: 36px;
+    padding: 0 14px;
+    background: var(--main-color);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.3rem;
+}
+
+/* 약관 */
+.agree {
+    margin: 30px 0;
+}
+
+.agree label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.agree input {
+    width: 18px;
+    height: 18px;
+}
+
+/* 버튼 영역 */
+.btn-area {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-area button {
+    flex: 1;
+    height: 52px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.btn-join {
+    background: var(--main-color);
+    color: #fff;
+}
+
+.btn-join:hover {
+    background: #007a2b;
+}
+
+.btn-cancel {
+    background: #ddd;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background: #bbb;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SUBWAY 회원가입</title>
+    <link rel="stylesheet" href="../css/step2.css">
+</head>
+
+<body>
+
+    <header class="logo">
+        <h1>SUBWAY</h1>
+        <p>EAT FRESH</p>
+    </header>
+
+    <nav class="step">
+        <ul>
+            <li>STEP1. 약관동의</li>
+            <li class="active">STEP2. 정보입력</li>
+            <li>STEP3. 가입완료</li>
+        </ul>
+    </nav>
+
+    <section class="container">
+        <h2>안녕하세요. Subway 회원가입 페이지 입니다.</h2>
+        <p class="desc">회원정보를 입력해주세요.</p>
+
+        <table class="form-table">
+            <tr>
+                <th>이름</th>
+                <td>
+                    <input type="text" id="name">
+                    <p class="error" id="nameError"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <th>생년월일</th>
+                <td>
+                    <input type="text" id="birth" placeholder="YYYYMMDD">
+                    <p class="error" id="birthError"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <th>휴대폰 번호</th>
+                <td>
+                    <input type="text" id="phone" placeholder="01012345678">
+                    <p class="error" id="phoneError"></p>
+                </td>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" id="userId">
+                    <button type="button">중복확인</button>
+                    <p class="error" id="idError">
+                        아이디는 영문·숫자 조합 8자 이상 12자리 이하입니다.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <th>비밀번호</th>
+                <td>
+                    <input type="password" id="password">
+                    <p class="error" id="pwError">
+                        비밀번호는 영문,숫자,특수기호 중 2가지 이상 조합하여
+                        10자리 이상 16자리 이하입니다.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <th>비밀번호 확인</th>
+                <td>
+                    <input type="password" id="passwordConfirm">
+                    <p class="error" id="pwConfirmError">
+                        비밀번호가 일치하지 않습니다.
+                    </p>
+                </td>
+            </tr>
+
+            <tr>
+                <th>이메일 주소</th>
+                <td>
+                    <input type="email" id="email">
+                    <p class="error" id="emailError">
+                        올바른 이메일 형식으로 입력해주세요.
+                    </p>
+                </td>
+            </tr>
+
+            <!-- <tr>
+                <th>무인발권기<br>기능 설정</th>
+                <td>
+                    <label><input type="radio" name="kiosk" checked> 사용</label>
+                    <label><input type="radio" name="kiosk"> 사용안함</label>
+                </td>
+            </tr> -->
+            <tr>
+                <th>나만의 SUBWAY</th>
+                <td>
+                    자주 방문하는 SUBWAY 매장을 등록해주세요!
+                    <button type="button">설정</button>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 마케팅 동의 -->
+        <div class="marketing">
+            <h3>마케팅 활용을 위한 개인정보 수집 이용 안내 (선택)</h3>
+
+            <div class="marketing-box">
+                <p><strong>수집목적</strong><br>
+                    고객 맞춤형 상품 및 서비스 추천, 이벤트 정보 안내</p>
+
+                <p><strong>수집항목</strong><br>
+                    이메일, 휴대폰번호, 서비스 이용기록</p>
+
+                <p><strong>보유기간</strong><br>
+                    회원 탈퇴 시 또는 동의 철회 시까지</p>
+
+                <div class="radio-group">
+                    <label><input type="radio" name="marketing"> 동의</label>
+                    <label><input type="radio" name="marketing" checked> 미동의</label>
+                </div>
+
+                <div class="check-group">
+                    <label><input type="checkbox"> 알림</label>
+                    <label><input type="checkbox"> SMS</label>
+                    <label><input type="checkbox"> 이메일</label>
+                </div>
+            </div>
+        </div>
+
+        <button id="joinBtn" disabled>회원가입</button>
+    </section>
+
+    <script src="../js/step2.js"></script>
+</body>
+
+</html>
