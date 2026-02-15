@@ -1,25 +1,19 @@
 @charset "utf-8";
 
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+#step2 {
+    padding: 100px 0;
 }
 
-body {
-    background: #fff;
-    color: #333;
-}
-
-.logo {
+#step2 .logo {
     text-align: center;
     margin: 40px 0;
 }
 
-.logo h1 {
+#step2 .logo h1 {
     font-size: 40px;
 }
 
-.step ul {
+#step2 .step ul {
     display: flex;
     justify-content: center;
     list-style: none;
@@ -27,65 +21,65 @@ body {
     padding: 0;
 }
 
-.step li {
+#step2 .step li {
     margin: 0 20px;
     padding-bottom: 10px;
     color: #999;
 }
 
-.step .active {
+#step2 .step .active {
     color: #008938;
     border-bottom: 2px solid #008938;
 }
 
-.container {
+#step2 .container {
     width: 800px;
     margin: 40px auto;
 }
 
-.desc {
+#step2 .desc {
     color: #666;
     margin-bottom: 20px;
 }
 
-.form-table {
+#step2 .form-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.form-table th,
-.form-table td {
+#step2 .form-table th,
+#step2 .form-table td {
     border-bottom: 1px solid #ddd;
     padding: 12px;
 }
 
-.form-table th {
+#step2 .form-table th {
     width: 180px;
     background: #f9f9f9;
     text-align: left;
 }
 
-.form-table input {
+#step2 .form-table input {
     padding: 6px;
     width: 260px;
 }
 
-.form-table button {
+#step2 .form-table button {
     margin-left: 10px;
 }
 
-.marketing {
+#step2 .marketing {
     margin-top: 40px;
     border: 1px solid #ddd;
     padding: 20px;
 }
 
-.marketing-box p {
+#step2 .marketing-box p {
     margin-bottom: 10px;
 }
 
-.radio-group,
-.check-group {
+#step2 .radio-group,
+#step2 .check-group {
     margin-top: 15px;
 }
 
@@ -105,7 +99,7 @@ body {
     cursor: pointer;
 }
 
-.error {
+#step2 .error {
     margin-top: 6px;
     font-size: 13px;
     color: #e53935;

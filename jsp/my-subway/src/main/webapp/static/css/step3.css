@@ -1,32 +1,26 @@
 @charset "utf-8";
 
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+#step3 {
+	padding: 100px 0;
 }
 
-body {
-    background: #fff;
-    color: #333;
-}
-
-.logo {
+#step3 .logo {
     text-align: center;
     margin: 40px 0;
 }
 
-.logo h1 {
+#step3 .logo h1 {
     font-size: 42px;
     color: #008938;
     letter-spacing: 2px;
 }
 
-.logo p {
+#step3 .logo p {
     color: #fdb913;
     font-weight: bold;
 }
 
-.step ul {
+#step3 .step ul {
     display: flex;
     justify-content: center;
     list-style: none;
@@ -34,49 +28,49 @@ body {
     padding: 0;
 }
 
-.step li {
+#step3 .step li {
     margin: 0 20px;
     padding-bottom: 10px;
     color: #999;
 }
 
-.step .active {
+#step3 .step .active {
     color: #008938;
     border-bottom: 2px solid #008938;
 }
 
-.container {
+#step3 .container {
     width: 800px;
     margin: 80px auto;
     text-align: center;
 }
 
-.complete-box {
+#step3 .complete-box {
     padding: 60px 40px;
 }
 
-.icon {
+#step3 .icon {
     font-size: 64px;
     margin-bottom: 30px;
 }
 
-.complete-box h2 {
+#step3 .complete-box h2 {
     font-size: 26px;
     margin-bottom: 20px;
 }
 
-.complete-box h2 span {
+#step3 .complete-box h2 span {
     color: #008938;
 }
 
-.desc {
+#step3 .desc {
     font-size: 15px;
     color: #666;
     line-height: 1.6;
     margin-bottom: 40px;
 }
 
-.btn-group a {
+#step3 .btn-group a {
     display: inline-block;
     width: 220px;
     height: 48px;

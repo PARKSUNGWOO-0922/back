@@ -10,5 +10,5 @@ document.getElementById("benefitBtn").addEventListener("click", () => {
 
 // 메인 이동
 document.getElementById("mainBtn").addEventListener("click", () => {
-    location.href = "/subway/main.html";
+    location.href = "${path}/index.jsp";
 });

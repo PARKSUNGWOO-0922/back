@@ -9,7 +9,9 @@
 </head>
 <body>
 	<footer>
-		<p>Copyright 2026 <%= siteName %>. All Rights Reserved.</p>
+		<%-- 
+			<p>Copyright 2026 <%= siteName %>. All Rights Reserved.</p> 
+		--%>
 	</footer>
 </body>
 </html>

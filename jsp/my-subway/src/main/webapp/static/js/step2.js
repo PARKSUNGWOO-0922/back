@@ -229,5 +229,5 @@ email.addEventListener("input", () => {
 // 가입 버튼 클릭
 // =======================
 joinBtn.addEventListener("click", () => {
-    location.href = "step3.html";
+    location.href = "step3.jsp";
 });

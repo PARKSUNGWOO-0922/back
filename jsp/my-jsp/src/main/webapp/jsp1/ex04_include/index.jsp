@@ -18,7 +18,6 @@ pageEncoding="UTF-8"%>
     2. 액션 include
         - 변수, 함수 공유❌
         - 파라미터 전달
-        
     3. JSTL import
         - 변수, 함수 공유❌
         - 파라미터 전달
@@ -32,8 +31,8 @@ pageEncoding="UTF-8"%>
 		<meta charset="UTF-8">
 		<title>메인 페이지</title>
 	</head>
-	<body>
-
+	<body>		
+		<%-- 스크립틀릿 --%>
 		<%
 			String loginId = "admin";
 		%>
@@ -44,12 +43,14 @@ pageEncoding="UTF-8"%>
 		<%-- 섹션 --%>
 		<section>
             <h2>메인 페이지 섹션</h2>
+			<%-- 표현식 --%>
 			<p>로그인 사용자: <%= loginId %></p>
 			<%-- header.jsp의 지역변수 공유 --%>
-			<p>사이트명 재사용: <%= siteName %> </p>
+			<%-- <p>사이트명 재사용: <%= siteName %></p> --%>
 		</section>
-
+		
 		<%-- 푸터 --%>
 		<%@ include file="footer.jsp" %>
+
 	</body>
 </html>

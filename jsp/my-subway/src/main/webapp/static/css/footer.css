@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url("common.css");
 
 /* typo */
 footer {
@@ -41,7 +42,8 @@ footer .inquiry a {
     width: 100%;
     color: #333;
 }
-footer .inquiry .inner div {
+footer .inquiry .inner .inquiry-icon {
+    display: block;
     float: left; 
     width: 70px;
     height: 70px;
@@ -61,16 +63,16 @@ footer .inquiry .inner span {
 }
 
 /* 아이콘 스프라이트(sprite) 이미지 배경으로 삽입 */
-footer .inquiry .inner div {
+footer .inquiry .inner .inquiry-icon {
     background:#F6F6F6 url(../assets/img/icon_quickmenu.png) no-repeat;
 }
-footer .inquiry .inner a:nth-of-type(2) div {
+footer .inquiry .inner a:nth-of-type(2) .inquiry-icon {
     background-position: -70px 0px;
 }
-footer .inquiry .inner a:nth-of-type(3) div {
+footer .inquiry .inner a:nth-of-type(3) .inquiry-icon {
     background-position: -140px 0px;
 }
-footer .inquiry .inner a:nth-of-type(4) div {
+footer .inquiry .inner a:nth-of-type(4) .inquiry-icon {
     background-position: -210px 4px;
 }
 

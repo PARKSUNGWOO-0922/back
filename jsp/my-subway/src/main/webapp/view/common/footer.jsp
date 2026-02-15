@@ -7,8 +7,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./favicon.png">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="../../static/css/footer.css">
   <title>SUBWAY 써브웨이</title>
 </head>
 
@@ -19,22 +19,22 @@
     <div class="inquiry">
       <div class="inner">
           <a href="#">
-            <div>아이콘1</div>
+            <span class="inquiry-icon">아이콘1</span>
             <strong>프랜차이즈</strong>
             <span>개설절차/투자비용 정보</span>
           </a>
           <a href="#">
-            <div>아이콘2</div>
+            <span class="inquiry-icon">아이콘2</span>
             <strong>지사안내</strong>
             <span>수도권/지방 지사정보</span>
           </a>
           <a href="#">
-            <div>아이콘3</div>
+            <span class="inquiry-icon">아이콘3</span>
             <strong>광고영상</strong>
             <span>TV광고/동영상</span>
           </a>
           <a href="#">
-            <div>아이콘4</div>
+            <span class="inquiry-icon">아이콘4</span>
             <strong>고객문의</strong>
             <span>자주하는 질문/1:1문의</span>
           </a>

@@ -4,20 +4,22 @@ pageEncoding="UTF-8"%>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>공통 푸터 페이지</title>
+        <title>Insert title here</title>
     </head>
     <body>
-        <%-- <%
-            int year = java.time.Year.now().getValue();
-        %> --%>
+        <%-- 
+            <%
+                String siteName = "JSP Study";
+                int year = java.time.Year.now().getValue();
+
+                <p>Copyright <%= year %> <%= siteName %></p>
+            %> 
+        --%>
         <footer>
-            <%-- <p>Copyright &copy; <%= year %> <%= siteName %></p> --%>
-            <p>Copyright
-             <%= request.getParameter("year") %>
-              <%= request.getParameter("siteName") %>
-              All Right Reserved.
-             
-              </p> 
+            <p>Copyright <%= request.getParameter("year") %> <%= request.getParameter("siteName") %></p> 
         </footer>
+        <%--
+         (me)자바코드만 사용 , html 사용시 에러,대소문자 구분,
+        --%>
     </body>
 </html>

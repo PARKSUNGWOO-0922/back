@@ -1,21 +1,22 @@
-<%@ page language="java"
-         contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="view/common/favicon.png">
-  <link rel="stylesheet" href="static/css/main.css">
+  <%-- 상대주소 --%>
+  <link rel="icon" href="${path}/view/common/favicon.png">
+  <link rel="stylesheet" href="${path}/static/css/notice.css">
   <title>SUBWAY 써브웨이</title>
 </head>
 
 <body>
-<%--헤더 include 디렉티브 --%>
-   <%@include file="view/common/header.jsp" %>>
+	<%-- 헤더: 액션 include --%>
+	<jsp:include page="/view/common/header.jsp" />
 
     <!-- section area -->
     <div id="notice" class="container">
@@ -129,8 +130,8 @@
         </div>
     </div><!-- .container -->
 
-     <%--푸터 include 디렉티브 --%>
-   <%@include file="view/common/footer.jsp" %>>
+ 	<%-- 푸터: 액션 include --%>
+	<jsp:include page="/view/common/footer.jsp" />
 </body>
 
 </html>

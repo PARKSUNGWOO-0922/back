@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
             <h2>서브 페이지 섹션</h2>
 			<p>로그인 사용자: <%= loginId %></p>
 			<%-- header.jsp의 지역변수 공유 --%>
-			<p>사이트명 재사용: <%= siteName %> </p>
+			<p>사이트명 재사용: </p>
 		</section>
 
 		<%-- 푸터 --%>

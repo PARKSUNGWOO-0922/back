@@ -1,87 +1,97 @@
-<%@ page language="java"
-         contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%
+	// 컨텍스트 경로(프로젝트의 루트 즉, 프로젝트명)를 가져와서 
+	// 'path'라는 이름의 변수로 저장
+	String path = request.getContextPath();
+	pageContext.setAttribute("path", path);
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%-- 상대주소 --%>
   <link rel="icon" href="view/common/favicon.png">
-  <link rel="stylesheet" href="static/css/main.css">
+  <%-- 방법1: <%= pageContext.getAttribute("path") %> --%>
+  <%-- <link rel="stylesheet" href="<%= pageContext.getAttribute("path") %>/static/css/member.css"> --%>
+  <%-- 방법2: <%= path %> --%>
+  <link rel="stylesheet" href="<%= path %>/static/css/member.css">
+  <%-- 방법3: ${path} --%>
+  <%-- <link rel="stylesheet" href="${path}/static/css/member.css"> --%>
   <title>SUBWAY 써브웨이</title>
 </head>
 
 <body>
-<%--헤더 include 디렉티브 --%>
-   <%@include file="${path}view/common/header.jsp" %>>
+	<%-- 
+		헤더: 액션 include
+			 /는 프로젝트명/webapp/
+	--%>
+	<jsp:include page="/view/common/header.jsp" />
 
-    <header class="logo">
-        <h1>SUBWAY</h1>
-        <p class="slogan">EAT FRESH</p>
-    </header>
-
-    <nav class="step">
-        <ul>
-            <li class="active">STEP1. 약관동의</li>
-            <li>STEP2. 정보입력</li>
-            <li>STEP3. 가입완료</li>
-        </ul>
-    </nav>
-
-    <section class="container">
-        <h2>약관동의 및 정보활용동의</h2>
-        <p class="desc">SUBWAY 서비스 이용을 위한 약관에 동의해주세요.</p>
-
-        <div class="agree-box">
-            <label class="all">
-                <input type="checkbox" id="agreeAll">
-                필수항목 전체동의
-            </label>
-
-            <hr>
-
-            <label>
-                <input type="checkbox" class="agree required">
-                서비스 이용 약관 동의 (필수)
-            </label>
-            <textarea readonly>
-제1조 목적
-본 약관은 SUBWAY에서 제공하는 서비스 이용과 관련하여...
-        </textarea>
-
-            <label>
-                <input type="checkbox" class="agree required">
-                개인정보 수집 및 이용 동의 (필수)
-            </label>
-            <textarea readonly>
-수집 항목: 이름, 휴대전화번호
-이용 목적: 회원관리 및 서비스 제공
-        </textarea>
-
-            <label>
-                <input type="checkbox" class="agree">
-                마케팅 활용을 위한 개인정보 수집 이용 동의 (선택)
-            </label>
-            <textarea readonly>
-이벤트 및 프로모션 안내
-        </textarea>
-
-            <label>
-                <input type="checkbox" class="agree">
-                위치기반서비스 이용 약관 동의 (선택)
-            </label>
-            <textarea readonly>
-매장 위치 안내 서비스 제공 목적
-        </textarea>
-
-            <button id="confirmBtn" disabled>확인</button>
-        </div>
+    <section id="member">
+        <header class="logo">
+            <h1>SUBWAY</h1>
+            <p class="slogan">EAT FRESH</p>
+        </header>
+        <nav class="step">
+            <ul>
+                <li class="active">STEP1. 약관동의</li>
+                <li>STEP2. 정보입력</li>
+                <li>STEP3. 가입완료</li>
+            </ul>
+        </nav>
+        <section class="container">
+            <h2>약관동의 및 정보활용동의</h2>
+            <p class="desc">SUBWAY 서비스 이용을 위한 약관에 동의해주세요.</p>
+            <div class="agree-box">
+                <label class="all">
+                    <input type="checkbox" id="agreeAll">
+                    필수항목 전체동의
+                </label>
+                <hr>
+                <label>
+                    <input type="checkbox" class="agree required">
+                    서비스 이용 약관 동의 (필수)
+                </label>
+                <textarea readonly>
+        제1조 목적
+        본 약관은 SUBWAY에서 제공하는 서비스 이용과 관련하여...
+            </textarea>
+                <label>
+                    <input type="checkbox" class="agree required">
+                    개인정보 수집 및 이용 동의 (필수)
+                </label>
+                <textarea readonly>
+        수집 항목: 이름, 휴대전화번호
+        이용 목적: 회원관리 및 서비스 제공
+            </textarea>
+                <label>
+                    <input type="checkbox" class="agree">
+                    마케팅 활용을 위한 개인정보 수집 이용 동의 (선택)
+                </label>
+                <textarea readonly>
+        이벤트 및 프로모션 안내
+            </textarea>
+                <label>
+                    <input type="checkbox" class="agree">
+                    위치기반서비스 이용 약관 동의 (선택)
+                </label>
+                <textarea readonly>
+        매장 위치 안내 서비스 제공 목적
+            </textarea>
+                <button id="confirmBtn" disabled>확인</button>
+            </div>
+        </section>
     </section>
 
-    <script src="../js/agree.js"></script>
+ 	<%-- 푸터: 액션 include --%>
+	<jsp:include page="/view/common/footer.jsp" />
+
+    <script src="<%= path %>/static/js/member.js"></script>
 </body>
-  <%--푸터 include 디렉티브 --%>
-   <%@include file="view/common/footer.jsp" %>>
+
 </html>

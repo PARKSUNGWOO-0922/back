@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="${path}view/common/favicon.png">
-  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="../../static/css/main.css">
   <title>SUBWAY 써브웨이</title>
 </head>
 
@@ -17,12 +17,14 @@
   <header id="header">
     <div class="container">
       <!-- 로고 -->
-      <%-- 상대주소 --%>
-      <%-- <h1 class="logo"><a href="../../index.jsp"><img src="static/assets/img/logo_w.png" alt="써브웨이로 이동하기"></a></h1> --%>
-      <%-- 절대주소 --%>
-      <%-- <h1 class="logo"><a href="my-subway/index.jsp"><img src="static/assets/img/logo_w.png" alt="써브웨이로 이동하기"></a></h1> --%>
-      <%-- 절대주소 --%>
-      <h1 class="logo"><a href="${path}/index.jsp"><img src="static/assets/img/logo_w.png" alt="써브웨이로 이동하기"></a></h1>
+      <%-- 
+      		// 상대 경로
+      		// header.jsp가 아닌 include 지시자에 의해 index.jsp에 삽입
+      		// 이미지 src 경로 기준은 index.jsp이다.
+      		<img src="static/assets/img/logo_w.png"
+      		<a href="index.jsp">
+       --%>
+      <h1 class="logo"><a href="index.jsp"><img src="${path}/static/assets/img/logo_w.png" alt="써브웨이로 이동하기"></a></h1>
       <!-- 내비게이션: GNB -->
       <nav id="gnb">
         <ul class="main">
@@ -46,7 +48,7 @@
           <li><a href="#">새소식</a>
             <ul class="sub">
               <li><a href="#">이벤트·프로모션</a></li>
-              <li><a href="${path}/view/board/notice.jsp">뉴스·공지사항</a></li>
+              <li><a href="view/board/notice.jsp">뉴스·공지사항</a></li>
               <li><a href="#">광고영상</a></li>
             </ul>
           </li>
@@ -77,9 +79,9 @@
       <div class="util">
         <!-- sns -->
         <a href="#" class="youtube">SNS</a>
-        <%--공유 페이지의 링크는 절대주소로 지정한다. --%>
-        <a href="${path}/view/login/login.jsp">로그인</a>
-        <a href="${path}/view/member/member.jsp">회원가입</a>
+        <%-- 공유 페이지의 링크는 절대 주소로 지정한다. --%>
+        <a href="view/login/login.jsp">로그인</a>
+        <a href="view/member/member.jsp">회원가입</a>
       </div>
     </div><!-- .container -->
   </header>

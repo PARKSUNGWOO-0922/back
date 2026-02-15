@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>메인페이지</title>
+		<title>Insert title here</title>
 	</head>
 	<body>
 		<%--
@@ -16,23 +16,32 @@ pageEncoding="UTF-8"%>
 				- 파라미터 전달 ⭕
 				- JSP 전통 방식 MVC에서 자주 사용
 			
-				<jsp:include page="target.jsp">
-					<jsp:param name="key" value="value" />
+				비교: include 지시자: 변수 공유 ⭕, 파라미터 전달 ❌
+					<%@ include file="경로/파일명.jsp" %>
+
+				<jsp:include page="경로/파일명.jsp">
+					<jsp:param name="키" value="값" />
 				</jsp:include>
 		--%>
 
-		<%-- <%@ include file="header.jsp" %> --%>
+		<%-- 
+			<%@ include file="header.jsp" %> 
+			<% String siteName = "Subway"; %>
+		--%>
+		<%-- <jsp:param name="키" value="값"/> --%>
+		<%-- 액션 태그 내부에 주석 사용❌ --%>
 		<jsp:include page="header.jsp">
-			<jsp:param name="siteName" value="JSP Study"/>
+			<jsp:param name="siteName" value="써브웨이"/>
 		</jsp:include>
 
 		<%
-			String loginId = "admin";
+			String loginId = "hong";
 		%>
 
+		<h1>메인 페이지</h1>
 		<main>
 			<p>로그인 사용자: <%= loginId %></p>
-			<%-- 지역 변수 공유x --%>
+			<%-- 지역 변수 공유❌ --%>
 			<%-- <p>사이트명 재사용: <%= siteName %></p> --%>
 		</main>
 
