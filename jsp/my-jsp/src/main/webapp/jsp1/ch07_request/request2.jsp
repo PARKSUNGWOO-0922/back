@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%--직접쓴 코딩 덮어쓰기로 사라짐 --%>
 <!DOCTYPE html>
 <html>
 <head>

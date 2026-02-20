@@ -13,32 +13,37 @@ pageEncoding="UTF-8"%>
 	<body>
 		<h2>수집된 데이터</h2>
 		<%-- param 객체를 통해 직접 접근 가능
-				- ${param.name}은 내부적으로 request.getParameter("name")을 호출하는 것과 같습니다.
+				- ${param.name}은 내부적으로 
+				  request.getParameter("name")을 호출하는 것과 같습니다.
 				- 데이터 타입: 문자열(String)
+				
+			<%= request.getParameter("name") %>
+			${param.name}
+				
 		--%>
 		<%-- 서블릿에서 데이터를 가공(예: 나이에 10을 더함, DB에서 이름을 검색함 등)했다면, 
 			 반드시 setAttribute로 담아서 ${name} 형태로 사용해야 합니다. --%>
 		<p>이름: ${param.name}</p>
 		<p>현재 나이: ${param.age}세 (10년 뒤: ${futureAge}세)</p>
 		
-		<%-- <p>관심 분야: ${not empty paramValues.hobby ? paramValues.hobby : "없음"}</p>  --%>
+		<h2>EL: 조건(삼항) 연산자</h2>
+		<p>관심 분야: ${not empty paramValues.hobby ? paramValues.hobby : "없음"}</p>
 		
-		<%-- <p>관심 분야:
+		<%-- if ~ else if ~ else --%>
+		<h2>JSTL: choose~when~otherwise 조건문</h2>
+		<%-- EL의 +는 숫자 더하기만, 문자열 연결x --%>
+		<p>관심 분야:
 			<c:choose>
 				<c:when test="${not empty paramValues.hobby}">
-				
 					${fn:join(paramValues.hobby, ", ")}
-						fn:join → 배열을 한 줄 문자열로 바꾸기
-						fn:join(배열, "구분자")
-
-구분자란? 배열 사이에 들어갈 연결 문자
 				</c:when>
 				<c:otherwise>
 					없음
 				</c:otherwise>
 			</c:choose>
-		</p> --%>
+		</p>
 
+		<h2>JSTL: forEach 반복문</h2>
 		<p>관심 분야:
 			<c:forEach var="hobby" items="${hobbies}" varStatus="status">
 				<%-- ${hobby}<c:if test="${!status.last}">, </c:if> --%>
