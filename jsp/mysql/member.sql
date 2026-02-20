@@ -1,0 +1,2 @@
+-- DB생성
+CREATE SCHEMA 'testdb' DEFAULT CHARACTER SET utf8mb4;
