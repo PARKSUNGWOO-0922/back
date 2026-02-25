@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- 
-	<jsp:getProperty name="test" property="message"/>--%>
+	<%-- getMessage() 호출
+		<jsp:getProperty name="test" property="message" />
+	 --%>
+	
 	${test.message}
 </body>
 </html>

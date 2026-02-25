@@ -14,8 +14,9 @@
 		gender = "여자";
 	}
 	
+	// 2. 다중 파라미터 처리
+	// {"독서", "영화", "여행", "게임"}
 	String[] values = request.getParameterValues("hobby");
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -25,16 +26,17 @@
 </head>
 <body>
 	<h1>Request Example1</h1>
-	<p>성명 : <%=name%><p/>
-	<p>학번 : <%=studentNum%><p/>
-	<p>성별 : <%=gender%><p/>
-	<p>학과 : <%=major%><br>
+	<p>성명 : <%=name%></p>
+	<p>학번 : <%=studentNum%></p>
+	<p>성별 : <%=gender%></p>
+	<p>학과 : <%=major%></p>
+	
 	<%
-		if(values != null){
-			for(String val: values){
-	%>			
-			 <p>취미: <%=val %> </p>
-	<%		
+		if (values != null) {
+			for (String val : values) {
+	%>
+				<p>취미: <%= val %></p>
+	<%
 			}
 		}
 	%>
