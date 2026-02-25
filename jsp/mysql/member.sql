@@ -31,18 +31,29 @@ DROP TABLE IF EXISTS member;
 
 -- ex02 회원가입 테이블 생성
 CREATE TABLE `member` (
-	  `phone` varchar(30) NOT NULL,
-	  `name` varchar(20) NOT NULL,
-	  `gender` char(1) NOT NULL,
+	  `phone` varchar(30) ,
+	  `name` varchar(20),
+	  `gender` char(1),
 	  `id` varchar(20) PRIMARY KEY,
 	  `pwd` varchar(20) NOT NULL,
-	  `email` varchar(30) NOT NULL,
-	  `zipcode` char(7) NOT NULL,
-	  `address1` varchar(60) NOT NULL,
-	  `address2` varchar(60) NOT NULL,
-	  `hobby` char(5) NOT NULL,
-	  `job` varchar(30) NOT NULL
+	  `email` varchar(30) ,
+	  `zipcode` char(7) ,
+	  `address1` varchar(60) ,
+	  `address2` varchar(60) ,
+	  `hobby` char(5) ,
+	  `job` varchar(30)
 );
+INSERT INTO `member` (id, pwd, name, gender, phone, email, zipcode, address1, address2, hobby, job) VALUES 
+('green_leaf', 'pass111', '김지혜', 'F', '010-1111-2222', 'leaf@example.com', '06150', '서울 강남구 삼성로', '101호', '운동', '연구전문직'),
+('meat_lover', 'pass222', '이강철', 'M', '010-2222-3333', 'meat@example.com', '04524', '서울 중구 세종대로', '2층', '여행', '일반자영업'),
+('fast_eat', 'pass333', '박민수', 'M', '010-3333-4444', 'fast@example.com', '03154', '서울 종로구 종로1길', 'A빌딩', '게임', '회사원'),
+('olivelover', 'pass444', '최윤아', 'F', '010-4444-5555', 'olive@example.com', '08217', '서울 구로구 경인로', '305호', '영화', '교수학생'),
+('spicy_king', 'pass555', '정태수', 'M', '010-5555-6666', 'spicy@example.com', '48058', '부산 해운대구 해운대해변로', '10층', '인터넷', '공무원'),
+('cheese_man', 'pass666', '한승호', 'M', '010-6666-7777', 'cheese@example.com', '13487', '경기 성남시 분당구', 'B아파트', '운동', '의료인'),
+('morning_sub', 'pass777', '조현주', 'F', '010-7777-8888', 'morning@example.com', '03925', '서울 마포구 월드컵북로', '4층', '여행', '종료/언론/예술인'),
+('pickles_no', 'pass888', '윤지민', 'F', '010-8888-9999', 'pickles@example.com', '21558', '인천 남동구 정각로', '202호', '영화', '주부'),
+('healthy_way', 'pass999', '강대한', 'M', '010-9999-0000', 'healthy@example.com', '35242', '대전 서구 둔산로', '501호', '운동', '법조인'),
+('sandwich_fan', 'pass000', '임사랑', 'F', '010-1234-5678', 'fan@example.com', '41911', '대구 중구 공평로', '6층', '인터넷', '기타');
 
 -- 게시판 테이블
 CREATE TABLE board (
@@ -55,7 +66,7 @@ CREATE TABLE board (
     
     -- 회원 테이블(members)의 id를 참조하는 외래키 설정 (회원만 글쓰기 가능할 경우)
     CONSTRAINT fk_board_writer FOREIGN KEY (userid) 
-    REFERENCES users(userid) ON DELETE CASCADE
+    REFERENCES member(id) ON DELETE CASCADE
 );
 
 -- 데이터 삽입
