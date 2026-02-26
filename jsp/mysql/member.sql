@@ -6,8 +6,8 @@ USE testdb;
 
 -- ex01. 테이블 생성
 CREATE TABLE users (
-	userid VARCHAR(20) PRIMARY KEY,
-    userpw VARCHAR(20) NOT NULL 
+	id VARCHAR(50) PRIMARY KEY,
+    pwd VARCHAR(100) NOT NULL 
 );
 
 -- 데이터 삽입
@@ -34,8 +34,8 @@ CREATE TABLE `member` (
 	  `phone` varchar(30) ,
 	  `name` varchar(20),
 	  `gender` char(1),
-	  `id` varchar(20) PRIMARY KEY,
-	  `pwd` varchar(20) NOT NULL,
+	  `id` varchar(50) PRIMARY KEY,
+	  `pwd` varchar(100) NOT NULL,
 	  `email` varchar(30) ,
 	  `zipcode` char(7) ,
 	  `address1` varchar(60) ,
@@ -43,6 +43,8 @@ CREATE TABLE `member` (
 	  `hobby` char(5) ,
 	  `job` varchar(30)
 );
+INSERT INTO `member` (id, pwd, name, gender, phone, email, zipcode, address1, address2, hobby, job) VALUES 
+('hong', '1234', '홍길동', 'M', '010-1111-2222', 'hong@naver.com', '01234', '경기 성남시 미금로', '605호', '운동', '무직');
 INSERT INTO `member` (id, pwd, name, gender, phone, email, zipcode, address1, address2, hobby, job) VALUES 
 ('green_leaf', 'pass111', '김지혜', 'F', '010-1111-2222', 'leaf@example.com', '06150', '서울 강남구 삼성로', '101호', '운동', '연구전문직'),
 ('meat_lover', 'pass222', '이강철', 'M', '010-2222-3333', 'meat@example.com', '04524', '서울 중구 세종대로', '2층', '여행', '일반자영업'),

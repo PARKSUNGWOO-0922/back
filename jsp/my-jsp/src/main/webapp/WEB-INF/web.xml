@@ -11,4 +11,40 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.xhtml</welcome-file>
   </welcome-file-list>
+  <!--  -->
+  	<context-param>
+	    <param-name>adminEmail</param-name>
+	    <param-value>admin@test.com</param-value>
+	</context-param>
+ <!--  -->
+	<servlet>
+		<servlet-name>MyServlet</servlet-name>
+		<jsp-file>/ex09_config.jsp</jsp-file>
+		<init-param>
+			<param-name>adminEmail</param-name>
+	    	<param-value>admin@gmail.com</param-value>
+		
+		</init-param>
+	</servlet>
+	
+		<!-- ex12_exception.jsp -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/jsp2/ch08/ex12_exception_error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.ArithmeticException</exception-type>
+		<location>/jsp1/ch08/ex12_arithmetic_error.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/jsp1/ch08/ex12_500error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/jsp1/ch08/ex12_404error.jsp</location>
+	</error-page>
+	
 </web-app>
